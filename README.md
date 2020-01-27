@@ -6,62 +6,48 @@ Nim (Work In Progress)
 The following [global Jest API methods](https://jestjs.io/docs/en/api.html) have bindings:
 
 ```nim
-proc afterAll*(fn: proc(varargs[auto])): auto
-proc afterAll*(fn: proc(varargs[auto]), timeout: cint): auto
+proc afterAll*(fn: proc(args:varargs[auto]))
+proc afterAll*(fn: proc(args:varargs[auto]), timeout: cint)
 
-proc afterEach*(fn: proc(varargs[auto])): auto
-proc afterEach*(fn: proc(varargs[auto]), timeout: cint): auto
+proc afterEach*(fn: proc(args: varargs[auto]))
+proc afterEach*(fn: proc(args: varargs[auto]), timeout: cint)
 
-proc beforeAll*(fn: proc(varargs[auto])): auto
-proc beforeAll*(fn: proc(varargs[auto]), timeout: cint): auto
+proc beforeAll*(fn: proc(args: varargs[auto]))
+proc beforeAll*(fn: proc(args: varargs[auto]), timeout: cint)
 
-proc beforeEach*(fn: proc(varargs[auto])): auto
-proc beforeEach*(fn: proc(varargs[auto]), timeout: cint): auto
+proc beforeEach*(fn: proc(args: varargs[auto]))
+proc beforeEach*(fn: proc(args: varargs[auto]), timeout: cint)
 
-proc describe*(name: cstring, fn: proc(varargs[auto]))
-proc describeEach*(table: auto, name: cstring, fn: proc(varargs[auto])): auto =
-  describe.each(table)(name, fn)
-proc describeEach*(table: auto, name: cstring, fn: proc(varargs[auto], timeout: cint)): auto =
-  describe.each(table)(name, fn, timeout)
+proc describe*(name: cstring, fn: proc(args: varargs[auto]))
+proc test*(name: cstring, fn: proc(args: varargs[auto]))
+proc test*(name: cstring, fn: proc(args: varargs[auto]), timeout: cint)
+
+proc describeEach*(table: auto, name: cstring, fn: proc(args: varargs[auto]))
+proc describeEach*(table: auto, name: cstring, fn: proc(args: varargs[auto], timeout: cint))
   
-proc describeOnly*(name: cstring, fn: proc(varargs[auto])): auto =
-  describe.only(name, fn)
+proc describeOnly*(name: cstring, fn: proc(args: varargs[auto]))
 
-proc describeOnlyEach*(table: auto, name: cstring, fn: proc(varargs[auto])): auto =
-  describe.only.each(table)(name, fn)
-proc describeOnlyEach*(table: auto, name: cstring, fn: proc(varargs[auto], timeout: cint)): auto =
-  describe.only.each(table)(name, fn, timeout)
+proc describeOnlyEach*(table: auto, name: cstring, fn: proc(args: varargs[auto]))
 
-proc describeSkip*(name: cstring, fn: proc(varargs[auto])): auto =
-  describe.skip(name, fn)
+proc describeOnlyEach*(table: auto, name: cstring, fn: proc(args: varargs[auto], timeout: cint))
 
-proc describeSkipEach*(table: auto, name: cstring, fn: proc(varargs[auto])): auto =
-  describe.skip.each(table)(name, fn)
+proc describeSkip*(name: cstring, fn: proc(args: varargs[auto]))
+
+proc describeSkipEach*(table: auto, name: cstring, fn: proc(args: varargs[auto]))
   
-proc test*(name: cstring, fn: proc(varargs[auto])): auto
-proc test*(name: cstring, fn: proc(varargs[auto]), timeout: cint): auto
+proc testEach*(table: auto, name: cstring, fn: proc(args: varargs[auto]))
 
-proc testEach*(table: auto, name: cstring, fn: proc(varargs[auto])): auto =
-  test.each(table)(name, fn)
-proc testEach*(table: auto, name: cstring, fn: proc(varargs[auto], timeout: cint)): auto =
-  test.each(table)(name, fn, timeout)
-  
-proc testOnly*(name: cstring, fn: proc(varargs[auto])): auto =
-  test.only(name, fn)
+proc testEach*(table: auto, name: cstring, fn: proc(args: varargs[auto], timeout: cint))
+proc testOnly*(name: cstring, fn: proc(done: bool))
 
-proc testOnlyEach*(table: auto, name: cstring, fn: proc(varargs[auto])): auto =
-  test.only.each(table)(name, fn)
-proc testOnlyEach*(table: auto, name: cstring, fn: proc(varargs[auto], timeout: cint)): auto =
-  test.only.each(table)(name, fn, timeout)
+proc testOnlyEach*(table: auto, name: cstring, fn: proc(args: varargs[auto]))
+proc testOnlyEach*(table: auto, name: cstring, fn: proc(args: varargs[auto], timeout: cint))
 
-proc testSkip*(name: cstring, fn: proc(varargs[auto])): auto =
-  test.skip(name, fn)
+proc testSkip*(name: cstring, fn: proc(args: varargs[auto]))
 
-proc testSkipEach*(table: auto, name: cstring, fn: proc(varargs[auto])): auto =
-  test.skip.each(table)(name, fn)
+proc testSkipEach*(table: auto, name: cstring, fn: proc(args: varargs[auto]))
 
-proc testTodo*(name: cstring): auto =
-  test.todo(name)
+proc testTodo*(name: cstring)
 ```
 
 Currently untested

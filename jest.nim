@@ -21,6 +21,8 @@ proc beforeEach*(fn: proc(args: varargs[auto]), timeout: cint)
 proc describe*(name: cstring, fn: proc(args: varargs[auto]))
 proc test*(name: cstring, fn: proc(args: varargs[auto]))
 proc test*(name: cstring, fn: proc(args: varargs[auto]), timeout: cint)
+
+proc it*(name: cstring, fn: proc(args: varargs[auto]))
 {.pop.}
 
 proc describeEach*(table: auto, name: cstring, fn: proc(args: varargs[auto])): auto =

@@ -90,9 +90,28 @@ proc toHaveLength*(self: Expectation, number: cint)
 proc toHaveProperty*(self: Expectation, keyPath: cstring, value: auto)
 proc toBeCloseTo*(self: Expectation, number: cint, numDigits: cint)
 proc toBeDefined*(self: Expectation)
+proc toBeFalsy*(self: Expectation, )
+proc toBeGreaterThan*(self: Expectation, number: cint)
+proc toBeGreaterThanOrEqual*(self: Expectation, number: cint)
+proc toBeLessThan*(self: Expectation, number: cint)
+proc toBeLessThanOrEqual*(self: Expectation, number: cint)
+proc toBeInstanceOf*(self: Expectation, class: auto)
+proc toBeNull*(self: Expectation)
+proc toBeTruthy*(self: Expectation)
+proc toBeUndefined*(self: Expectation)
+proc toBeNaN*(self: Expectation)
+proc toContain*(self: Expectation, item: auto)
+proc toContainEqual*(self: Expectation, item: auto)
+proc toEqual*(self: Expectation, value: auto)
+proc toMatch*(self: Expectation, regexpOrString: auto)
+proc toMatchObject*(self: Expectation, obj: JsObject)
+proc toMatchSnapshot*(self: Expecation, propertyMatchers: seq[auto], hint: cstring)
+proc toMatchInlineSnapshot*(self: Expecation, propertyMatchers: seq[auto], inlineSnapshot: auto)
+proc toStrictEqual*(self: Expecation, value: auto)
+proc toThrow*(self: Expecation, error: auto)
+proc toThrowErrorMatchingSnapshot*(self: Expecation, hint: cstring)
+proc toThrowErrorMatchingInlineSnapshot*(self: Expecation, inlineSnapshot: auto)
 ```
-
-More to follow...
 
 Currently untested
 
